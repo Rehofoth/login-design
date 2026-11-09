@@ -1,0 +1,817 @@
+
+/* ========================================
+   1. RESET AND GENERAL SETTINGS
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: #0b0d08;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+
+/* ========================================
+   2. MAIN PAGE LAYOUT
+======================================== */
+
+.login-page {
+    position: relative;
+    isolation: isolate;
+
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 40px;
+
+    padding: 50px;
+    overflow: hidden;
+}
+
+
+/* ========================================
+   3. STARRY BACKGROUND
+======================================== */
+
+.star-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+
+    background: #ffe56b;
+    border-radius: 50%;
+
+    box-shadow: 0 0 12px 2px #ffe56b55;
+
+    animation: star-twinkle 3s ease-in-out infinite alternate;
+}
+
+.star-one {
+    top: 15%;
+    left: 10%;
+}
+
+.star-two {
+    top: 25%;
+    right: 12%;
+    animation-delay: 1s;
+}
+
+.star-three {
+    top: 70%;
+    left: 15%;
+    animation-delay: 1.5s;
+}
+
+.star-four {
+    top: 80%;
+    right: 20%;
+    animation-delay: 0.5s;
+}
+
+.star-five {
+    top: 40%;
+    left: 50%;
+    animation-delay: 2s;
+}
+
+.star-six {
+    top: 10%;
+    right: 35%;
+    animation-delay: 1.2s;
+}
+
+
+/* ========================================
+   4. LAMP AREA
+======================================== */
+
+.lamp-area {
+    position: relative;
+
+    width: 450px;
+    height: 480px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ========================================
+   5. LAMP GLOW
+======================================== */
+
+.lamp-glow {
+    position: absolute;
+    top: 80px;
+
+    width: 280px;
+    height: 280px;
+
+    background: #ffe56b;
+    filter: blur(100px);
+    opacity: 0.12;
+
+    border-radius: 50%;
+
+    animation: glow-pulse 4s ease-in-out infinite alternate;
+}
+
+
+/* ========================================
+   6. LAMP BODY
+======================================== */
+
+.lamp {
+    position: relative;
+    z-index: 2;
+
+    width: 100px;
+    height: 230px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lamp-shade {
+    width: 100px;
+    height: 35px;
+
+    background: linear-gradient(#303027, #080907);
+    border-radius: 60px 60px 10px 10px;
+
+    box-shadow: 0 0 20px #ffed9b66;
+
+    z-index: 3;
+}
+
+.lamp-neck {
+    width: 5px;
+    height: 175px;
+
+    background: linear-gradient(
+        to right,
+        #292a21,
+        #080907,
+        #3b3b2b
+    );
+}
+
+.lamp-base {
+    width: 65px;
+    height: 10px;
+
+    background: linear-gradient(#34352a, #090a07);
+    border-radius: 50%;
+
+    margin-top: -2px;
+}
+
+
+/* ========================================
+   7. SPOTLIGHT BEAM
+======================================== */
+
+.light-beam {
+    position: absolute;
+    top: 125px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 350px;
+    height: 270px;
+
+    background: linear-gradient(
+        to bottom,
+        #ffe99166,
+        #ffe99118 70%,
+        transparent
+    );
+
+    clip-path: polygon(
+        35% 0,
+        65% 0,
+        100% 100%,
+        0 100%
+    );
+
+    filter: blur(12px);
+
+    animation: beam-flicker 5s ease-in-out infinite;
+}
+
+
+/* ========================================
+   8. FLOATING LIGHT PARTICLES
+======================================== */
+
+.light-particle {
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    background: #ffe75e;
+    border-radius: 50%;
+
+    box-shadow: 0 0 15px 5px #ffe75e55;
+
+    animation: float 4s ease-in-out infinite alternate;
+}
+
+.particle-one {
+    top: 150px;
+    left: 70px;
+}
+
+.particle-two {
+    top: 300px;
+    right: 50px;
+    animation-delay: 1s;
+}
+
+.particle-three {
+    bottom: 80px;
+    left: 130px;
+    animation-delay: 2s;
+}
+
+.particle-four {
+    top: 210px;
+    right: 90px;
+    animation-delay: 0.5s;
+}
+
+
+/* ========================================
+   9. REALISTIC LAMP ON/OFF SWITCH
+======================================== */
+
+.lamp-toggle {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 10px 15px;
+    min-width: 160px;
+
+    background: linear-gradient(
+        145deg,
+        #292a22,
+        #10110d
+    );
+
+    border: 1px solid #444537;
+    border-radius: 40px;
+
+    color: #e9e9d9;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+
+    cursor: pointer;
+    z-index: 5;
+
+    box-shadow:
+        0 6px 12px #00000066,
+        inset 0 1px 2px #ffffff12;
+
+    transition: box-shadow 0.25s ease;
+}
+
+/* Indicator light */
+
+.lamp-toggle::before {
+    content: "";
+
+    width: 9px;
+    height: 9px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #ffe56b;
+
+    box-shadow:
+        0 0 5px #ffe56b,
+        0 0 12px #ffe56b88;
+
+    transition: all 0.3s ease;
+}
+
+/* Switch hover effect */
+
+.lamp-toggle:hover {
+    box-shadow:
+        0 8px 18px #00000088,
+        inset 0 1px 2px #ffffff20;
+}
+
+/* Switch press effect */
+
+.lamp-toggle:active {
+    box-shadow:
+        0 2px 5px #00000088,
+        inset 0 3px 5px #00000066;
+}
+
+/* Indicator when lamp is OFF */
+
+.lamp-area.light-off .lamp-toggle::before {
+    background: #55564d;
+    box-shadow: inset 0 1px 2px #00000088;
+}
+
+/* Keyboard accessibility */
+
+.lamp-toggle:focus-visible {
+    outline: 2px solid #ffe56b;
+    outline-offset: 5px;
+}
+
+
+/* ========================================
+   10. LAMP OFF EFFECTS
+======================================== */
+
+.lamp-area.light-off .lamp-glow {
+    opacity: 0 !important;
+}
+
+.lamp-area.light-off .light-beam {
+    opacity: 0 !important;
+}
+
+.lamp-area.light-off .lamp-shade {
+    box-shadow: none;
+}
+
+.lamp-area.light-off .light-particle {
+    opacity: 0;
+}
+
+
+/* ========================================
+   11. LOGIN CARD
+======================================== */
+
+.login-card {
+    position: relative;
+    z-index: 4;
+
+    width: 100%;
+    max-width: 400px;
+
+    padding: 32px 25px;
+
+    background: rgba(65, 65, 48, 0.35);
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 22px;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 15px 50px #00000055;
+
+    animation: card-appear 1s ease-out;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease,
+        visibility 0.5s ease,
+        box-shadow 0.3s ease;
+}
+
+.login-card h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 12px;
+    color: #c5c5b9;
+    margin-bottom: 25px;
+}
+
+
+/* ========================================
+   12. HIDE AND SHOW LOGIN CARD
+======================================== */
+
+.login-card.login-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(20px) scale(0.96);
+}
+
+.login-card.login-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0) scale(1);
+}
+
+
+/* ========================================
+   13. INPUT FIELDS
+======================================== */
+
+.input-group {
+    margin-bottom: 14px;
+}
+
+.input-group label {
+    display: block;
+
+    font-size: 12px;
+    margin-bottom: 6px;
+
+    color: #deded3;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 13px 15px;
+
+    background: rgba(10, 12, 7, 0.75);
+
+    border: 1px solid #38392e;
+    border-radius: 12px;
+
+    outline: none;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    transition:
+        border-color 0.3s,
+        box-shadow 0.3s;
+}
+
+.input-group input::placeholder {
+    color: #858679;
+}
+
+.input-group input:focus {
+    border-color: #ffd900;
+    box-shadow: 0 0 10px #ffd90022;
+}
+
+
+/* ========================================
+   14. SHOW/HIDE PASSWORD
+======================================== */
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 65px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: none;
+    background: transparent;
+
+    color: #ffe56b;
+
+    font-family: inherit;
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.toggle-password:hover {
+    color: #ffffff;
+}
+
+
+/* ========================================
+   15. SIGN IN BUTTON
+======================================== */
+
+.sign-in-btn {
+    width: 100%;
+    padding: 14px;
+    margin-top: 5px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #ffd900;
+    color: #17170e;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+}
+
+.sign-in-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px #ffd90044;
+}
+
+.sign-in-btn:active {
+    transform: scale(0.98);
+}
+
+
+/* ========================================
+   16. LOGIN FEEDBACK MESSAGE
+======================================== */
+
+#login-message {
+    font-size: 12px;
+    text-align: center;
+
+    margin-top: 12px;
+
+    color: #ffe991;
+}
+
+
+/* ========================================
+   17. DIVIDER
+======================================== */
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin: 22px 0;
+
+    color: #a7a797;
+    font-size: 10px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+
+    flex: 1;
+    height: 1px;
+
+    background: #ffffff18;
+}
+
+
+/* ========================================
+   18. GOOGLE AND GITHUB BUTTONS
+======================================== */
+
+.social-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-btn {
+    flex: 1;
+
+    padding: 12px 8px;
+
+    background: #ffffff09;
+
+    border: 1px solid #ffffff12;
+    border-radius: 12px;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s,
+        border-color 0.3s;
+}
+
+.social-btn:hover {
+    background: #ffffff18;
+    border-color: #ffe56b66;
+}
+
+.google-icon {
+    color: #4285f4;
+    font-size: 15px;
+    margin-right: 5px;
+}
+
+
+/* ========================================
+   19. LOGIN SUCCESS ANIMATION
+======================================== */
+
+.login-card.login-success {
+    animation: success-glow 0.8s ease-in-out;
+    border-color: #ffd900;
+}
+
+@keyframes success-glow {
+    0% {
+        box-shadow: 0 15px 50px #00000055;
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 0 35px #ffd90066;
+        transform: scale(1.02);
+    }
+
+    100% {
+        box-shadow: 0 15px 50px #00000055;
+        transform: scale(1);
+    }
+}
+
+
+/* ========================================
+   20. GENERAL ANIMATIONS
+======================================== */
+
+@keyframes glow-pulse {
+    from {
+        opacity: 0.08;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 0.2;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes float {
+    from {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    to {
+        transform: translateY(-18px);
+        opacity: 1;
+    }
+}
+
+@keyframes beam-flicker {
+    0%, 100% {
+        opacity: 0.75;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes card-appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes star-twinkle {
+    from {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+
+/* ========================================
+   21. MOBILE RESPONSIVENESS
+======================================== */
+
+@media (max-width: 800px) {
+    .login-page {
+        flex-direction: column;
+        justify-content: center;
+
+        gap: 0;
+        padding: 25px 18px;
+    }
+
+    .lamp-area {
+        width: 100%;
+        max-width: 350px;
+        height: 260px;
+
+        transform: scale(0.8);
+
+        margin-bottom: -10px;
+    }
+
+    .lamp-glow {
+        top: 20px;
+    }
+
+    .light-beam {
+        top: 65px;
+        height: 190px;
+    }
+
+    .login-card {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 380px) {
+    .login-card {
+        padding: 25px 18px;
+    }
+
+    .login-card h1 {
+        font-size: 25px;
+    }
+
+    .lamp-toggle {
+        min-width: 145px;
+        justify-content: center;
+    }
+}
+
+
+/* ========================================
+   22. BUTTON ACCESSIBILITY
+======================================== */
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible {
+    outline: 2px solid #ffe56b;
+    outline-offset: 4px;
+}
+
+
+/* ========================================
+   23. REDUCED MOTION ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}

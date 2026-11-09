@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lamp Login Animation</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <main class="login-page">
+        <div class="star-background" aria-hidden="true">
+          <span class="star star-one"></span>
+          <span class="star star-two"></span>
+          <span class="star star-three"></span>
+          <span class="star star-four"></span>
+          <span class="star star-five"></span>
+          <span class="star star-six"></span>
+        </div>
+
+        <!-- Animated Lamp -->
+        <section class="lamp-area" aria-label="Animated lamp">
+            <div class="lamp-glow"></div>
+            <button type="button" id="lamp-toggle" class="lamp-toggle">
+                 Turn Light Off
+            </button>
+
+            <div class="lamp">
+                <div class="lamp-shade"></div>
+                <div class="lamp-neck"></div>
+                <div class="lamp-base"></div>
+            </div>
+
+            <div class="light-beam"></div>
+
+            <div class="light-particle particle-one"></div>
+            <div class="light-particle particle-two"></div>
+            <div class="light-particle particle-three"></div>
+            <div class="light-particle particle-four"></div>
+        </section>
+
+        <!-- Login Form -->
+        <section class="login-card">
+
+            <h1>Welcome Back</h1>
+
+            <p class="subtitle">
+                Enter your details to access your account
+            </p>
+
+            <form id="login-form">
+
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
+
+                
+<div class="password-wrapper">
+    <input
+        type="password"
+        id="password"
+        placeholder="Enter your password"
+        autocomplete="current-password"
+        required
+    >
+
+    <button
+        type="button"
+        id="toggle-password"
+        class="toggle-password"
+        aria-label="Show password"
+        aria-pressed="false"
+    >
+        Show
+    </button>
+</div>
+
+
+                <button type="submit" class="sign-in-btn">
+                    Sign In
+                </button>
+
+                <p id="login-message" role="status" aria-live="polite"></p>
+
+            </form>
+
+            <div class="divider">
+                <span>OR CONTINUE WITH</span>
+            </div>
+
+            <div class="social-buttons">
+                <button type="button" class="social-btn" id="google-btn">
+                    <span class="google-icon">G</span>
+                    Google
+                </button>
+
+                <button type="button" class="social-btn" id="github-btn">
+                    <span>●</span>
+                    GitHub
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
